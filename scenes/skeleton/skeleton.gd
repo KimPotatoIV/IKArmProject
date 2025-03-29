@@ -66,32 +66,32 @@ func ccd_ik(target_position: Vector2) -> void:
 		 ㄴ 구한 각도만큼 회전한다
 		'''
 		
-		var hand_to_target: Vector2 = \
+		var wrist_to_target: Vector2 = \
 			(target_position - wrist_marker_node.global_position).normalized()
-		var hand_to_direction: Vector2 =\
+		var wrist_to_hand_end: Vector2 =\
 			(hand_end_position - wrist_marker_node.global_position).normalized()
-		var hand_angle: float = hand_to_direction.angle_to(hand_to_target)
-		hand_node.rotation += hand_angle
+		var wrist_angle: float = wrist_to_hand_end.angle_to(wrist_to_target)
+		hand_node.rotation += wrist_angle
 		# 손목 회전 적용
 		hand_end_position = hand_end_marker_node.global_position
 		# 새로운 끝점 위치 계산
 
-		var lower_arm_to_target: Vector2 = \
+		var elbow_to_target: Vector2 = \
 			(target_position - elbow_marker_node.global_position).normalized()
-		var lower_arm_direction: Vector2 = \
+		var elbow_to_hand_end: Vector2 = \
 			(hand_end_position - elbow_marker_node.global_position).normalized()
-		var lower_arm_angle: float = lower_arm_direction.angle_to(lower_arm_to_target)
+		var elbow_angle: float = elbow_to_hand_end.angle_to(elbow_to_target)
 		# 하완(Lower Arm) 회전 계산
-		lower_arm_node.rotation += lower_arm_angle
-		# 하완 회전 적용
+		lower_arm_node.rotation += elbow_angle
+		# 팔꿈치 회전 적용
 		hand_end_position = hand_end_marker_node.global_position
 		# 새로운 끝점 위치 계산
 		
-		var upper_arm_to_target: Vector2 = \
+		var shoulder_to_target: Vector2 = \
 			(target_position - shoulder_marker_node.global_position).normalized()
-		var upper_arm_direction: Vector2 = \
+		var shoulder_to_hand_end: Vector2 = \
 			(hand_end_position - shoulder_marker_node.global_position).normalized()  # 팔꿈치가 아닌 손끝으로부터의 방향
-		var upper_arm_angle: float = upper_arm_direction.angle_to(upper_arm_to_target)
-		# 상완(Upper Arm) 회전 계산
-		upper_arm_node.rotation += upper_arm_angle
-		# 상완 회전 적용
+		var shoulder_angle: float = shoulder_to_hand_end.angle_to(shoulder_to_target)
+		# 어깨 회전 계산
+		upper_arm_node.rotation += shoulder_angle
+		# 어깨 회전 적용
