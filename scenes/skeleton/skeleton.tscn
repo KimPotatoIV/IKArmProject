@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqie7gv74kpna"]
+
+[ext_resource type="Texture2D" uid="uid://d3v1wlmdgq53u" path="res://scenes/skeleton/upper_arm.png" id="1_hj3yb"]
+[ext_resource type="Script" uid="uid://ccf05blvwtmxd" path="res://scenes/skeleton/skeleton.gd" id="1_qev80"]
+[ext_resource type="Texture2D" uid="uid://dlgkcu4dubh4l" path="res://scenes/skeleton/lower_arm.png" id="2_k7ymt"]
+[ext_resource type="Texture2D" uid="uid://cw0r1dpampm47" path="res://scenes/skeleton/hand.png" id="3_k7ymt"]
+
+[node name="Skeleton" type="Node2D"]
+script = ExtResource("1_qev80")
+
+[node name="ShoulderMarker" type="Marker2D" parent="."]
+
+[node name="UpperArm" type="Sprite2D" parent="."]
+texture = ExtResource("1_hj3yb")
+offset = Vector2(104, 0)
+
+[node name="ElbowMarker" type="Marker2D" parent="UpperArm"]
+position = Vector2(207, 0)
+
+[node name="LowerArm" type="Sprite2D" parent="UpperArm"]
+position = Vector2(207, 1)
+texture = ExtResource("2_k7ymt")
+offset = Vector2(82, 0)
+
+[node name="WristMarker" type="Marker2D" parent="UpperArm/LowerArm"]
+position = Vector2(163, 0)
+
+[node name="Hand" type="Sprite2D" parent="UpperArm/LowerArm"]
+position = Vector2(163, -10)
+texture = ExtResource("3_k7ymt")
+offset = Vector2(81, 0)
+
+[node name="HandMarker" type="Marker2D" parent="UpperArm/LowerArm/Hand"]
+position = Vector2(161, 0)
